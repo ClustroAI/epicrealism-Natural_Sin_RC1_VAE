@@ -15,11 +15,11 @@ def invoke(input_text):
         input_json = json.loads(input_text)
         prompt = input_json['prompt']
         negative_prompt = input_json.get('negative_prompt', "")
-        steps = int(input_json.get('steps', 50))
+        steps = int(input_json.get('steps', 25))
     except:
         prompt = input_text
         negative_prompt = ""
-        steps = 50
+        steps = 25
     image = pipe(prompt=prompt, negative_prompt=negative_prompt, num_inference_steps=steps).images[0]
     image.save("generated_image.png")
     return "generated_image.png"
