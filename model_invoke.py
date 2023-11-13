@@ -19,7 +19,7 @@ def invoke(input_text):
     except:
         prompt = input_text
         negative_prompt = ""
-        steps = 25
+        steps = 50
     image = pipe(prompt=prompt, negative_prompt=negative_prompt, num_inference_steps=steps).images[0]
     image.save("generated_image.png")
     return "generated_image.png"
