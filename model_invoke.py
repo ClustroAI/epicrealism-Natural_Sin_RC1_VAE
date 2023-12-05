@@ -3,10 +3,16 @@ from huggingface_hub import hf_hub_download
 import torch
 import json
 
-model = hf_hub_download(repo_id="Remilistrasza/epiCRealism", filename="epicrealism_naturalSinRC1VAE.safetensors")
-pipe = StableDiffusionPipeline.from_single_file(model,
-                                                torch_dtype=torch.float16, 
-                                                safety_checker=None)
+model = hf_hub_download(
+    repo_id="Remilistrasza/epiCRealism", 
+    filename="epicrealism_naturalSinRC1VAE.safetensors",
+    revision="43d4b6b2f14f9dbb5553b4bfcb17da70d66d8612"
+)
+pipe = StableDiffusionPipeline.from_single_file(
+    model,
+    dtype=torch.float16, 
+    safety_checker=None
+)
 pipe = pipe.to("cuda")
 pipe.safety_checker = None
 
